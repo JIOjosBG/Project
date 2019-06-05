@@ -1,3 +1,16 @@
+rawinfo="To record sound press one of the colored buttons.To play it press \"play\".To delete last recorded press \"delete last recorded\".To delete all recorded press \"delete all recorded\"To generate one random sound  press \"generate random \" .To play all the randomly generated sounds press \"play random\"."
+info=[]
+sincespace=0
+for i in range(len(rawinfo)):
+    if rawinfo[i]==" " and sincespace>20:
+        info.append(rawinfo[i])
+        info.append(" \n ")
+        sincespace=0
+    else:
+        sincespace+=1
+        info.append(rawinfo[i])
+info="".join(info)
+ 
 import tkinter as tk
 import winsound
 import winsound
@@ -41,7 +54,8 @@ def  play_all():
         print("all empty")
     #rint(notes)
 
-
+    
+    
 def playrand():
     print("playing random")
     for i in range(len(rand)):
@@ -111,7 +125,7 @@ def addrandom():
 
 first=tk.Tk()
 first.title("My first window")
-first.geometry("400x400")
+first.geometry("600x400")
 
 label1=tk.Label(text="welcome")
 label1.grid(column=0,row=0)
@@ -153,6 +167,9 @@ delbtn.grid(column=0,row=3)
 
 delbtnlast=tk.Button(text="delete last recorded",bg="white",command=deletelast)
 delbtnlast.grid(column=1,row=3)
+
+labelinfo=tk.Label(text=info)
+labelinfo.grid(column=0,row=4)
 '''
 pr=tk.Button(text="pr",bg="white",command=sounds.whatnotes)
 pr.grid(column=0,row=6)
